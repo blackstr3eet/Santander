@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".extract.ExtractActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutTop"
+        android:layout_width="match_parent"
+        android:layout_height="232dp"
+        android:background="@color/colorBlue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <TextView
+            style="@style/TextViewSizeHigherCustom"
+            android:id="@+id/textView1"
+            android:layout_width="215dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="30dp"
+            android:background="@color/colorWhite"
+            android:text="Natasha Jascalevich"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            style="@style/TextViewSizeLeastCustom"
+            android:id="@+id/textView2"
+            android:layout_width="47dp"
+            android:layout_height="13dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="28dp"
+            android:background="@color/colorWhite"
+            android:text="Conta"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView1" />
+
+        <TextView
+            style="@style/TextViewSizeHigherCustom"
+            android:id="@+id/textView3"
+            android:layout_width="300dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="6dp"
+            android:background="@color/colorWhite"
+            android:text="2050 / 01.111222-4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <TextView
+            style="@style/TextViewSizeLeastCustom"
+            android:id="@+id/textView4"
+            android:layout_width="47dp"
+            android:layout_height="13dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="21dp"
+            android:background="@color/colorWhite"
+            android:text="Saldo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <TextView
+            style="@style/TextViewSizeHigherCustom"
+            android:id="@+id/textView5"
+            android:layout_width="300dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="7dp"
+            android:background="@color/colorWhite"
+            android:text="R$1.000,00"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="31dp"
+            android:layout_marginEnd="13dp"
+            android:contentDescription="@string/login_logout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_logout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutCenter"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayoutTop">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="15dp"
+            android:text="Recentes"
+            android:textColor="@color/colorTextDark"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutBottom"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayoutCenter">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

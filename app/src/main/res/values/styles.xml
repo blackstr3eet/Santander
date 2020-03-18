@@ -13,4 +13,16 @@
         <item name="android:textColorHint">@color/colorPrimaryDark</item>
         <item name="android:textColor">@color/colorBlack</item>
     </style>
+
+    <style name="TextViewSizeHigherCustom" parent="AppTheme">
+        <item name="android:textSize">22sp</item>
+        <item name="backgroundTint">@color/colorBlue</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <style name="TextViewSizeLeastCustom" parent="AppTheme">
+        <item name="android:textSize">11sp</item>
+        <item name="backgroundTint">@color/colorBlue</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
 </resources>
