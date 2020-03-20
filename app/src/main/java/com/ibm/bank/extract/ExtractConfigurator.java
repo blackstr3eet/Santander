@@ -1,19 +1,19 @@
-package com.ibm.bank.login;
+package com.ibm.bank.extract;
 
 import java.lang.ref.WeakReference;
 
-public enum LoginConfigurator {
+public enum ExtractConfigurator {
     INSTANCE;
 
-    public void configure(LoginActivity activity) {
+    public void configure(ExtractActivity activity) {
 
-        LoginRouter router = new LoginRouter();
+        ExtractRouter router = new ExtractRouter();
         router.activity = new WeakReference<>(activity);
 
-        LoginPresenter presenter = new LoginPresenter();
+        ExtractPresenter presenter = new ExtractPresenter();
         presenter.output = new WeakReference<>(activity);
 
-        LoginInteractor interactor = new LoginInteractor();
+        ExtractInteractor interactor = new ExtractInteractor();
         interactor.output = presenter;
 
         if (activity.output == null) {

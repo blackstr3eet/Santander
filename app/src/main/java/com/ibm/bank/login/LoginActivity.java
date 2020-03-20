@@ -25,27 +25,50 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInp
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         bindViews();
+        bindOnClick();
 
         LoginConfigurator.INSTANCE.configure(this);
-        LoginRequest loginRequest = new LoginRequest();
 
-        output.fetchLoginData(loginRequest);
+//        LoginRequest loginRequest = new LoginRequest();
+//        output.fetchLoginData(loginRequest);
     }
 
     @Override
     public void displayLoginData(LoginViewModel viewModel) {
-
-    }
-
-    private void bindViews() {
-        btnLogin = findViewById(R.id.btnLogin);
-        btnLogin.setOnClickListener(this);
+        // set values in activity
     }
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(this, ExtractActivity.class);
-        startActivity(intent);
+        if(validInputDataUser() && validInputDataPassword()) {
+            Intent intent = new Intent(this, ExtractActivity.class);
+            startActivity(intent);
+        }
+        else if(!validInputDataUser()) {
+            // call error in field
+        }
+        else if(!validInputDataPassword()) {
+            // call error in field
+        }
+    }
+
+    private void bindViews() {
+        btnLogin = findViewById(R.id.btnLogin);
+    }
+
+    private void bindOnClick() {
+        btnLogin.setOnClickListener(this);
+    }
+
+    private boolean validInputDataUser() {
+        //
+        return true;
+    }
+
+    private boolean validInputDataPassword() {
+        //
+        return true;
     }
 }
