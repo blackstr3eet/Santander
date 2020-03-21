@@ -30,7 +30,7 @@
 
         <TextView
             style="@style/TextViewSizeLeastCustom"
-            android:id="@+id/textView2"
+            android:id="@+id/description"
             android:layout_width="47dp"
             android:layout_height="13dp"
             android:layout_marginStart="18dp"
@@ -42,7 +42,7 @@
 
         <TextView
             style="@style/TextViewSizeHigherCustom"
-            android:id="@+id/textView3"
+            android:id="@+id/date"
             android:layout_width="300dp"
             android:layout_height="29dp"
             android:layout_marginStart="18dp"
@@ -50,11 +50,11 @@
             android:background="@color/colorWhite"
             android:text="2050 / 01.111222-4"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/description" />
 
         <TextView
             style="@style/TextViewSizeLeastCustom"
-            android:id="@+id/textView4"
+            android:id="@+id/value"
             android:layout_width="47dp"
             android:layout_height="13dp"
             android:layout_marginStart="18dp"
@@ -62,7 +62,7 @@
             android:background="@color/colorWhite"
             android:text="Saldo"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            app:layout_constraintTop_toBottomOf="@+id/date" />
 
         <TextView
             style="@style/TextViewSizeHigherCustom"
@@ -74,7 +74,7 @@
             android:background="@color/colorWhite"
             android:text="R$1.000,00"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:layout_constraintTop_toBottomOf="@+id/value" />
 
         <ImageButton
             android:id="@+id/btnExit"
@@ -119,6 +119,7 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayoutCenter">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/extractListItems"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
