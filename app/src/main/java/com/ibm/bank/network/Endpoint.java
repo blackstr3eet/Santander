@@ -2,7 +2,6 @@ package com.ibm.bank.network;
 
 import com.ibm.bank.domain.Statement;
 import com.ibm.bank.domain.User;
-
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.FormUrlEncoded;

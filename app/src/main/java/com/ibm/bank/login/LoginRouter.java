@@ -8,7 +8,6 @@ import com.ibm.bank.network.Credentials;
 import com.ibm.bank.R;
 import com.ibm.bank.extract.ExtractActivity;
 import com.ibm.bank.util.Validation;
-
 import java.lang.ref.WeakReference;
 import java.util.List;
 

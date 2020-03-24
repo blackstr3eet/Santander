@@ -4,7 +4,6 @@ import android.util.Log;
 import com.ibm.bank.network.API;
 import com.ibm.bank.network.Credentials;
 import com.ibm.bank.domain.User;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
