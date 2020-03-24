@@ -12,11 +12,11 @@ interface LoginPresenterInput {
 
 public class LoginPresenter implements LoginPresenterInput {
 
-    public WeakReference<LoginActivityInput> activity;
+    public WeakReference<LoginActivityInput> activityInput;
 
     @Override
     public void presentLoginDataStorage(Credentials credentials) {
-        activity.get().displayLoginData(credentials);
+        activityInput.get().displayLoginData(credentials);
     }
 
     @Override
@@ -28,6 +28,6 @@ public class LoginPresenter implements LoginPresenterInput {
         values.add(response.account);
         values.add(response.balance);
 
-        activity.get().loginDataResponse(values);
+        activityInput.get().loginDataResponse(values);
     }
 }

@@ -6,7 +6,7 @@ interface ExtractInteractorInput {
 
 public class ExtractInteractor implements ExtractInteractorInput {
 
-    public ExtractPresenterInput output;
+    public ExtractPresenterInput presenterInput;
 
     @Override
     public void fetchExtractData(ExtractRequest request) {

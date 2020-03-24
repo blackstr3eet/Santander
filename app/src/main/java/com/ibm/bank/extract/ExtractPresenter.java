@@ -8,7 +8,7 @@ interface ExtractPresenterInput {
 
 public class ExtractPresenter implements ExtractPresenterInput {
 
-    public WeakReference<ExtractActivityInput> output;
+    public WeakReference<ExtractActivityInput> activityInput;
 
     @Override
     public void presentExtractData(ExtractResponse response) {

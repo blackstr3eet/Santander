@@ -10,17 +10,17 @@ interface LoginInteractorInput {
 
 public class LoginInteractor implements LoginInteractorInput {
 
-    public LoginPresenterInput presenter;
+    public LoginPresenterInput presenterInput;
 
     @Override
     public void loadingLoginData(Context context) {
-        presenter.presentLoginDataStorage(Storage.retrieveDataWithSharedPreferences(context));
+        presenterInput.presentLoginDataStorage(Storage.retrieveDataWithSharedPreferences(context));
     }
 
     @Override
     public void fetchLoginDataResponse(LoginRequest request) {
         LoginResponse response = new LoginResponse();
         response.processBody(request);
-        presenter.loginResponseBody(response);
+        presenterInput.loginResponseBody(response);
     }
 }

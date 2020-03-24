@@ -11,10 +11,10 @@ public enum ExtractConfigurator {
         router.activity = new WeakReference<>(activity);
 
         ExtractPresenter presenter = new ExtractPresenter();
-        presenter.output = new WeakReference<>(activity);
+        presenter.activityInput = new WeakReference<>(activity);
 
         ExtractInteractor interactor = new ExtractInteractor();
-        interactor.output = presenter;
+        interactor.presenterInput = presenter;
 
         if (activity.output == null) {
             activity.output = interactor;
