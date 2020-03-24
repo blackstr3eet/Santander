@@ -17,15 +17,20 @@ interface LoginRouterInput {
 
 public class LoginRouter implements LoginRouterInput, View.OnClickListener {
 
+    public static final String KEY_BUNDLE_NAME = "name";
+    public static final String KEY_BUNDLE_AGENCY = "agency";
+    public static final String KEY_BUNDLE_ACCOUNT = "account";
+    public static final String KEY_BUNDLE_BALANCE = "balance";
+
     public WeakReference<LoginActivity> activity;
 
     @Override
     public void callNextScreen(List<String> putExtrasIntent) {
         Intent intent = createIntentForNextScreen().
-                putExtra("name", putExtrasIntent.get(0)).
-                putExtra("agency", putExtrasIntent.get(1)).
-                putExtra("account", putExtrasIntent.get(2)).
-                putExtra("balance", putExtrasIntent.get(3));
+                putExtra(KEY_BUNDLE_NAME, putExtrasIntent.get(0)).
+                putExtra(KEY_BUNDLE_AGENCY, putExtrasIntent.get(1)).
+                putExtra(KEY_BUNDLE_ACCOUNT, putExtrasIntent.get(2)).
+                putExtra(KEY_BUNDLE_BALANCE, putExtrasIntent.get(3));
 
         activity.get().startActivity(intent);
     }
