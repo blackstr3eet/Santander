@@ -7,6 +7,8 @@ import android.widget.Toast;
 import com.ibm.bank.network.Credentials;
 import com.ibm.bank.R;
 import com.ibm.bank.extract.ExtractActivity;
+import com.ibm.bank.util.Validation;
+
 import java.lang.ref.WeakReference;
 import java.util.List;
 
@@ -76,12 +78,22 @@ public class LoginRouter implements LoginRouterInput, View.OnClickListener {
         }
 
         if(user.trim().isEmpty()) {
-            showMessageError("usuário não preenchido");
+            showMessageError("campo usuário não preenchido");
             return false;
         }
 
         if(password.trim().isEmpty()) {
-            showMessageError("senha não preenchida");
+            showMessageError("campo senha não preenchida");
+            return false;
+        }
+
+        if(!Validation.checkUserLogin(user.trim())) {
+            showMessageError("cpf ou e-mail inserido não é válido");
+            return false;
+        }
+
+        if(!Validation.checkPasswordLogin(password.trim())) {
+            showMessageError("a senha não atende aos requisitos mínimos");
             return false;
         }
 
