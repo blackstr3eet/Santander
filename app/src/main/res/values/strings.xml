@@ -1,8 +1,11 @@
 <resources>
-    <string name="app_name">Bank</string>
-    <string name="login_logo">logo</string>
+    <string name="app_name">IBM</string>
+    <string name="login_logo">Logo</string>
     <string name="login_hint_user">Usuário</string>
     <string name="login_hint_password">Senha</string>
-    <string name="login_button">Login</string>
-    <string name="login_logout">Logout</string>
+    <string name="login_button">Entrar</string>
+    <string name="login_logout">Sair</string>
+    <string name="empty">Sem Valor Atribuído</string>
+    <string name="extract_account">Conta</string>
+    <string name="extract_balance">Saldo</string>
 </resources>

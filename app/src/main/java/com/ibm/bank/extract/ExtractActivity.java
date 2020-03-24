@@ -22,7 +22,7 @@ public class ExtractActivity extends AppCompatActivity implements ExtractActivit
 
     private ImageButton btnExit;
 
-    ExtractInteractorInput output;
+    ExtractInteractorInput interactorInput;
     ExtractRouter router;
 
     @Override

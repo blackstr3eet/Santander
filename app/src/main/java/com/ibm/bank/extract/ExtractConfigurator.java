@@ -16,8 +16,8 @@ public enum ExtractConfigurator {
         ExtractInteractor interactor = new ExtractInteractor();
         interactor.presenterInput = presenter;
 
-        if (activity.output == null) {
-            activity.output = interactor;
+        if (activity.interactorInput == null) {
+            activity.interactorInput = interactor;
         }
         if (activity.router == null) {
             activity.router = router;

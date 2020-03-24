@@ -18,13 +18,13 @@
 
         <TextView
             style="@style/TextViewSizeHigherCustom"
-            android:id="@+id/textView1"
+            android:id="@+id/name"
             android:layout_width="215dp"
             android:layout_height="29dp"
             android:layout_marginStart="18dp"
             android:layout_marginTop="30dp"
             android:background="@color/colorWhite"
-            android:text="Natasha Jascalevich"
+            android:text="@string/empty"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,45 +36,45 @@
             android:layout_marginStart="18dp"
             android:layout_marginTop="28dp"
             android:background="@color/colorWhite"
-            android:text="Conta"
+            android:text="@string/extract_account"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView1" />
+            app:layout_constraintTop_toBottomOf="@+id/name" />
 
         <TextView
             style="@style/TextViewSizeHigherCustom"
-            android:id="@+id/date"
+            android:id="@+id/data"
             android:layout_width="300dp"
             android:layout_height="29dp"
             android:layout_marginStart="18dp"
             android:layout_marginTop="6dp"
             android:background="@color/colorWhite"
-            android:text="2050 / 01.111222-4"
+            android:text="@string/empty"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/description" />
 
         <TextView
             style="@style/TextViewSizeLeastCustom"
-            android:id="@+id/value"
+            android:id="@+id/balance"
             android:layout_width="47dp"
             android:layout_height="13dp"
             android:layout_marginStart="18dp"
             android:layout_marginTop="21dp"
             android:background="@color/colorWhite"
-            android:text="Saldo"
+            android:text="@string/extract_balance"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/date" />
+            app:layout_constraintTop_toBottomOf="@+id/data" />
 
         <TextView
             style="@style/TextViewSizeHigherCustom"
-            android:id="@+id/textView5"
+            android:id="@+id/value"
             android:layout_width="300dp"
             android:layout_height="29dp"
             android:layout_marginStart="18dp"
             android:layout_marginTop="7dp"
             android:background="@color/colorWhite"
-            android:text="R$1.000,00"
+            android:text="@string/empty"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/value" />
+            app:layout_constraintTop_toBottomOf="@+id/balance" />
 
         <ImageButton
             android:id="@+id/btnExit"

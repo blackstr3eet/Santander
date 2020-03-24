@@ -16,8 +16,8 @@ public enum LoginConfigurator {
         LoginInteractor interactor = new LoginInteractor();
         interactor.presenterInput = presenter;
 
-        if (activity.interactor == null) {
-            activity.interactor = interactor;
+        if (activity.interactorInput == null) {
+            activity.interactorInput = interactor;
         }
 
         if (activity.router == null) {

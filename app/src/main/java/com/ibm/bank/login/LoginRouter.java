@@ -45,7 +45,7 @@ public class LoginRouter implements LoginRouterInput, View.OnClickListener {
             // delay for wait response of request
             Handler handler = new Handler();
             handler.postDelayed( () -> {
-                activity.get().interactor.fetchLoginDataResponse(request);
+                activity.get().interactorInput.fetchLoginDataResponse(request);
                 changeStatusLoading(false);
             }, 5000);
         }

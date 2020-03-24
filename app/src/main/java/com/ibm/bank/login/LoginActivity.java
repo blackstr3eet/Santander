@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInp
     protected ProgressBar progressBar;
     protected Button login;
 
-    LoginInteractorInput interactor;
+    LoginInteractorInput interactorInput;
     LoginRouter router;
 
     @Override
@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInp
 
         bindViews();
         bindOnClick();
-        interactor.loadingLoginData(this);
+        interactorInput.loadingLoginData(this);
     }
 
     @Override
