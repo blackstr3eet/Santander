@@ -1,24 +1,29 @@
 package com.ibm.bank.login;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
+import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
+import com.google.android.material.textfield.TextInputEditText;
+import com.ibm.bank.network.Credentials;
 import com.ibm.bank.R;
-import com.ibm.bank.extract.ExtractActivity;
+import java.util.List;
 
 interface LoginActivityInput {
-    void displayLoginData(LoginViewModel viewModel);
+    void displayLoginData(Credentials credentials);
+    void loginDataResponse(List<String> values);
 }
 
-public class LoginActivity extends AppCompatActivity implements LoginActivityInput, View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements LoginActivityInput {
 
-    private Button btnLogin;
+    protected TextInputEditText user;
+    protected TextInputEditText password;
+    protected ProgressBar progressBar;
+    protected Button login;
 
-    LoginInteractorInput output;
+    LoginInteractorInput interactor;
     LoginRouter router;
 
     @Override
@@ -26,49 +31,38 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInp
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        bindViews();
-        bindOnClick();
-
         LoginConfigurator.INSTANCE.configure(this);
 
-//        LoginRequest loginRequest = new LoginRequest();
-//        output.fetchLoginData(loginRequest);
+        bindViews();
+        bindOnClick();
+        interactor.loadingLoginData(this);
     }
 
     @Override
-    public void displayLoginData(LoginViewModel viewModel) {
-        // set values in activity
+    public void displayLoginData(Credentials credentials) {
+        LoginViewModel viewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
+
+        viewModel.data.observe(this, values -> {
+            user.setText(values.getUser());
+            password.setText(values.getPassword());
+        });
+
+        viewModel.getInternalStorageData(credentials);
     }
 
     @Override
-    public void onClick(View v) {
-        if(validInputDataUser() && validInputDataPassword()) {
-            Intent intent = new Intent(this, ExtractActivity.class);
-            startActivity(intent);
-        }
-        else if(!validInputDataUser()) {
-            // call error in field
-        }
-        else if(!validInputDataPassword()) {
-            // call error in field
-        }
+    public void loginDataResponse(List<String> values) {
+        router.callNextScreen(values);
     }
 
     private void bindViews() {
-        btnLogin = findViewById(R.id.btnLogin);
+        user = findViewById(R.id.editTextUser);
+        password = findViewById(R.id.editTextPassword);
+        progressBar = findViewById(R.id.progressBar);
+        login = findViewById(R.id.buttonLogin);
     }
 
     private void bindOnClick() {
-        btnLogin.setOnClickListener(this);
-    }
-
-    private boolean validInputDataUser() {
-        //
-        return true;
-    }
-
-    private boolean validInputDataPassword() {
-        //
-        return true;
+        login.setOnClickListener(router);
     }
 }

@@ -1,33 +1,94 @@
 package com.ibm.bank.login;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.view.View;
-import android.widget.AdapterView;
-
+import android.widget.Toast;
+import com.ibm.bank.network.Credentials;
+import com.ibm.bank.R;
+import com.ibm.bank.extract.ExtractActivity;
 import java.lang.ref.WeakReference;
+import java.util.List;
 
 interface LoginRouterInput {
-    Intent navigateToSomeWhere(int position);
-
-    void passDataToNextScene(int position, Intent intent);
+    void callNextScreen(List<String> putExtrasIntent);
 }
 
-public class LoginRouter implements LoginRouterInput, AdapterView.OnItemClickListener {
+public class LoginRouter implements LoginRouterInput, View.OnClickListener {
 
     public WeakReference<LoginActivity> activity;
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    public void callNextScreen(List<String> putExtrasIntent) {
+        Intent intent = createIntentForNextScreen().
+                putExtra("name", putExtrasIntent.get(0)).
+                putExtra("agency", putExtrasIntent.get(1)).
+                putExtra("account", putExtrasIntent.get(2)).
+                putExtra("balance", putExtrasIntent.get(3));
 
+        activity.get().startActivity(intent);
     }
 
     @Override
-    public Intent navigateToSomeWhere(int position) {
-        return null;
+    public void onClick(View v) {
+        // realize validation on fields login
+        String user = activity.get().user.getText().toString();
+        String password = activity.get().password.getText().toString();
+
+        if(checkFields(user, password)) {
+            LoginRequest request = new LoginRequest();
+            request.login(new Credentials(user, password));
+
+            changeStatusLoading(true);
+
+            // delay for wait response of request
+            Handler handler = new Handler();
+            handler.postDelayed( () -> {
+                activity.get().interactor.fetchLoginDataResponse(request);
+                changeStatusLoading(false);
+            }, 5000);
+        }
     }
 
-    @Override
-    public void passDataToNextScene(int position, Intent intent) {
+    private Intent createIntentForNextScreen() {
+        Intent intent = new Intent(activity.get(), ExtractActivity.class);
+        return intent;
+    }
 
+    private void changeStatusLoading(boolean loading) {
+        if(loading) {
+            activity.get().progressBar.setVisibility(View.VISIBLE);
+            activity.get().login.setEnabled(false);
+            activity.get().login.setBackgroundColor(activity.get().getResources().getColor(R.color.colorPrimaryDark));
+        }
+        else {
+            activity.get().progressBar.setVisibility(View.INVISIBLE);
+            activity.get().login.setEnabled(true);
+            activity.get().login.setBackgroundColor(activity.get().getResources().getColor(R.color.colorBlue));
+        }
+    }
+
+    private boolean checkFields(String user, String password) {
+
+        if(user.trim().isEmpty() && password.trim().isEmpty()) {
+            showMessageError("usuário e senha não preenchidos");
+            return false;
+        }
+
+        if(user.trim().isEmpty()) {
+            showMessageError("usuário não preenchido");
+            return false;
+        }
+
+        if(password.trim().isEmpty()) {
+            showMessageError("senha não preenchida");
+            return false;
+        }
+
+        return true;
+    }
+
+    private void showMessageError(String message) {
+        Toast.makeText(activity.get(), message, Toast.LENGTH_LONG).show();
     }
 }

@@ -3,18 +3,15 @@ package com.ibm.bank.extract;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
-import com.ibm.bank.MockList;
+import com.ibm.bank.domain.MockList;
 import com.ibm.bank.R;
-import com.ibm.bank.StatementList;
-
+import com.ibm.bank.domain.StatementList;
 import java.util.List;
 
 interface ExtractActivityInput {

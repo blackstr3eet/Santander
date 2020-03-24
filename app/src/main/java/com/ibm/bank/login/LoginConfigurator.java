@@ -11,14 +11,15 @@ public enum LoginConfigurator {
         router.activity = new WeakReference<>(activity);
 
         LoginPresenter presenter = new LoginPresenter();
-        presenter.output = new WeakReference<>(activity);
+        presenter.activity = new WeakReference<>(activity);
 
         LoginInteractor interactor = new LoginInteractor();
-        interactor.output = presenter;
+        interactor.presenter = presenter;
 
-        if (activity.output == null) {
-            activity.output = interactor;
+        if (activity.interactor == null) {
+            activity.interactor = interactor;
         }
+
         if (activity.router == null) {
             activity.router = router;
         }

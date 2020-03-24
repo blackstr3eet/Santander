@@ -18,6 +18,9 @@
         </activity>
 
         <activity android:name=".extract.ExtractActivity" android:screenOrientation="portrait" />
+
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

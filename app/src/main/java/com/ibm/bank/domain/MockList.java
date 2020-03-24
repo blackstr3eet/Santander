@@ -1,4 +1,4 @@
-package com.ibm.bank;
+package com.ibm.bank.domain;
 
 import java.util.ArrayList;
 import java.util.List;

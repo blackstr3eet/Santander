@@ -1,7 +1,6 @@
-package com.ibm.bank;
+package com.ibm.bank.domain;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -12,13 +11,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "statementList",
+    "userAccount",
     "error"
 })
-public class Statement {
+public class User {
 
-    @JsonProperty("statementList")
-    private List<StatementList> statementList = null;
+    @JsonProperty("userAccount")
+    private UserAccount userAccount;
 
     @JsonProperty("error")
     private Error error;
@@ -26,23 +25,23 @@ public class Statement {
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<>();
 
-    public Statement() {
+    public User() {
     }
 
-    public Statement(List<StatementList> statementList, Error error) {
+    public User(UserAccount userAccount, Error error) {
         super();
-        this.statementList = statementList;
+        this.userAccount = userAccount;
         this.error = error;
     }
 
-    @JsonProperty("statementList")
-    public List<StatementList> getStatementList() {
-        return statementList;
+    @JsonProperty("userAccount")
+    public UserAccount getUserAccount() {
+        return userAccount;
     }
 
-    @JsonProperty("statementList")
-    public void setStatementList(List<StatementList> statementList) {
-        this.statementList = statementList;
+    @JsonProperty("userAccount")
+    public void setUserAccount(UserAccount userAccount) {
+        this.userAccount = userAccount;
     }
 
     @JsonProperty("error")

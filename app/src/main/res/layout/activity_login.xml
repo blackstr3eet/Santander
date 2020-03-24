@@ -21,7 +21,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/MaterialDesignCustom"
-        android:id="@+id/filledTextField"
+        android:id="@+id/textInputLayoutUser"
         android:layout_width="342dp"
         android:layout_height="57dp"
         android:layout_marginStart="17dp"
@@ -35,7 +35,10 @@
 
         <com.google.android.material.textfield.TextInputEditText
             style="@style/MaterialDesignCustom"
+            android:id="@+id/editTextUser"
             android:textSize="15sp"
+            android:inputType="text"
+            android:maxLines="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -43,7 +46,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/MaterialDesignCustom"
-        android:id="@+id/filledTextField2"
+        android:id="@+id/textInputLayoutPassword"
         android:layout_width="342dp"
         android:layout_height="57dp"
         android:layout_marginStart="17dp"
@@ -52,31 +55,45 @@
         android:hint="@string/login_hint_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/filledTextField"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutUser"
         app:startIconContentDescription="@string/login_hint_user">
 
         <com.google.android.material.textfield.TextInputEditText
             style="@style/MaterialDesignCustom"
+            android:id="@+id/editTextPassword"
             android:textSize="15sp"
             android:inputType="textPassword"
+            android:maxLines="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <ProgressBar
+        style="?android:attr/progressBarStyle"
+        android:id="@+id/progressBar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/buttonLogin"
         android:layout_width="202dp"
         android:layout_height="62dp"
         android:layout_marginStart="87dp"
-        android:layout_marginTop="220dp"
         android:layout_marginEnd="86dp"
+        android:layout_marginBottom="12dp"
         android:backgroundTint="@color/colorBlue"
-        android:textColor="@color/colorWhite"
         android:text="@string/login_button"
+        android:textColor="@color/colorWhite"
         android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/progressBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/filledTextField2" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
