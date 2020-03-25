@@ -9,9 +9,9 @@ import retrofit2.Response;
 
 public class ExtractRequest {
 
-    public static String TAG = ExtractRequest.class.getSimpleName();
+    private static String TAG = ExtractRequest.class.getSimpleName();
 
-    public Statement body;
+    private Statement body;
 
     public void details() {
         Call<Statement> statement = API.getInstanceService().details();
@@ -29,5 +29,9 @@ public class ExtractRequest {
                 Log.e(TAG, "details request failure", t);
             }
         });
+    }
+
+    public Statement getBody() {
+        return body;
     }
 }

@@ -4,9 +4,14 @@ import com.ibm.bank.domain.StatementList;
 import java.util.List;
 
 public class ExtractResponse {
-    List<StatementList> list;
+
+    private List<StatementList> list;
 
     public void processBody(ExtractRequest request) {
-        list = request.body.getStatementList();
+        list = request.getBody().getStatementList();
+    }
+
+    public List<StatementList> getList() {
+        return list;
     }
 }
