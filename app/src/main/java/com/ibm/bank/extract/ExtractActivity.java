@@ -51,7 +51,7 @@ public class ExtractActivity extends AppCompatActivity implements ExtractActivit
         handler.postDelayed( () -> {
             changeStatusLoading(false);
             interactorInput.fetchExtractData(request);
-        }, 2000);
+        }, 4000);
     }
 
     @Override
