@@ -7,9 +7,6 @@ public enum ExtractConfigurator {
 
     public void configure(ExtractActivity activity) {
 
-        ExtractRouter router = new ExtractRouter();
-        router.activity = new WeakReference<>(activity);
-
         ExtractPresenter presenter = new ExtractPresenter();
         presenter.activityInput = new WeakReference<>(activity);
 
@@ -18,9 +15,6 @@ public enum ExtractConfigurator {
 
         if (activity.interactorInput == null) {
             activity.interactorInput = interactor;
-        }
-        if (activity.router == null) {
-            activity.router = router;
         }
     }
 }

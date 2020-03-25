@@ -1,29 +1,36 @@
 package com.ibm.bank.extract;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.ibm.bank.domain.MockList;
 import com.ibm.bank.R;
 import com.ibm.bank.domain.StatementList;
+import com.ibm.bank.login.LoginRouter;
 import java.util.List;
 
 interface ExtractActivityInput {
-    void displayExtractData(ExtractViewModel viewModel);
+    void displayExtractData(List<StatementList> statements);
 }
 
 public class ExtractActivity extends AppCompatActivity implements ExtractActivityInput, View.OnClickListener {
 
-    private ImageButton btnExit;
+    private TextView name;
+    private TextView data;
+    private TextView value;
+    private ProgressBar progressBar;
+    private RecyclerView recyclerView;
+    private ImageButton exit;
 
     ExtractInteractorInput interactorInput;
-    ExtractRouter router;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,23 +38,35 @@ public class ExtractActivity extends AppCompatActivity implements ExtractActivit
         setContentView(R.layout.activity_extract);
 
         bindViews();
+        retrieveActivityDataPrevious();
         bindOnClick();
 
         ExtractConfigurator.INSTANCE.configure(this);
 
-        RecyclerView recyclerView = findViewById(R.id.extractListItems);
-        recyclerView.setHasFixedSize(true);
+        ExtractRequest request = new ExtractRequest();
+        request.details();
+        changeStatusLoading(true);
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-
-        RecyclerView.Adapter adapter = new ExtractAdapter(MockList.INSTANCE.createMockListItemsExtract());
-        recyclerView.setAdapter(adapter);
+        Handler handler = new Handler();
+        handler.postDelayed( () -> {
+            changeStatusLoading(false);
+            interactorInput.fetchExtractData(request);
+        }, 2000);
     }
 
     @Override
-    public void displayExtractData(ExtractViewModel viewModel) {
-        // set values in activity
+    public void displayExtractData(List<StatementList> statements) {
+        ExtractViewModel viewModel = ViewModelProviders.of(this).get(ExtractViewModel.class);
+
+        viewModel.data.observe(this, values -> {
+            recyclerView.setHasFixedSize(true);
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+            recyclerView.setLayoutManager(layoutManager);
+            RecyclerView.Adapter adapter = new ExtractAdapter(values);
+            recyclerView.setAdapter(adapter);
+        });
+
+        viewModel.getStatementList(statements);
     }
 
     @Override
@@ -56,21 +75,43 @@ public class ExtractActivity extends AppCompatActivity implements ExtractActivit
     }
 
     private void bindViews() {
-        btnExit = findViewById(R.id.btnExit);
+        name = findViewById(R.id.name);
+        data = findViewById(R.id.data);
+        value = findViewById(R.id.value);
+        progressBar = findViewById(R.id.progressBarRecyclerView);
+        recyclerView = findViewById(R.id.extractListItems);
+        exit = findViewById(R.id.btnExit);
     }
 
     private void bindOnClick() {
-        btnExit.setOnClickListener(this);
+        exit.setOnClickListener(this);
     }
 
-    private class ExtractAdapter extends RecyclerView.Adapter<ExtractAdapter.ViewHolder> {
+    private void retrieveActivityDataPrevious() {
+        Bundle bundle = getIntent().getExtras();
+        name.setText(bundle.getString(LoginRouter.KEY_BUNDLE_NAME));
+        data.setText(String.format("%s / %s", bundle.getString(LoginRouter.KEY_BUNDLE_AGENCY), bundle.getString(LoginRouter.KEY_BUNDLE_ACCOUNT)));
+        value.setText(bundle.getString(LoginRouter.KEY_BUNDLE_BALANCE));
+    }
+
+    private void changeStatusLoading(boolean loading) {
+        if(loading) {
+            progressBar.setVisibility(View.VISIBLE);
+        }
+        else {
+            progressBar.setVisibility(View.INVISIBLE);
+            recyclerView.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private static class ExtractAdapter extends RecyclerView.Adapter<ExtractAdapter.ViewHolder> {
         private List<StatementList> items;
 
         public ExtractAdapter(List<StatementList> items) {
             this.items = items;
         }
 
-        public class ViewHolder extends RecyclerView.ViewHolder {
+        public static class ViewHolder extends RecyclerView.ViewHolder {
             public TextView title;
             public TextView description;
             public TextView date;

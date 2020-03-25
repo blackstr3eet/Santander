@@ -12,6 +12,6 @@ public class ExtractPresenter implements ExtractPresenterInput {
 
     @Override
     public void presentExtractData(ExtractResponse response) {
-
+        activityInput.get().displayExtractData(response.list);
     }
 }
