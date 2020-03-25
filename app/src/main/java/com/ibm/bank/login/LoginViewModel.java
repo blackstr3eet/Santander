@@ -2,7 +2,7 @@ package com.ibm.bank.login;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import com.ibm.bank.network.Credentials;
+import com.ibm.bank.domain.Credentials;
 
 public class LoginViewModel extends ViewModel {
 

@@ -1,4 +1,4 @@
-package com.ibm.bank.network;
+package com.ibm.bank.domain;
 
 public class Credentials {
 

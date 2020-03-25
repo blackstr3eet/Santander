@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Toast;
-import com.ibm.bank.network.Credentials;
+import com.ibm.bank.domain.Credentials;
 import com.ibm.bank.R;
 import com.ibm.bank.extract.ExtractActivity;
 import com.ibm.bank.util.Storage;

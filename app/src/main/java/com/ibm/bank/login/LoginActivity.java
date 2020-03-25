@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import com.google.android.material.textfield.TextInputEditText;
-import com.ibm.bank.network.Credentials;
+import com.ibm.bank.domain.Credentials;
 import com.ibm.bank.R;
 import java.util.List;
 

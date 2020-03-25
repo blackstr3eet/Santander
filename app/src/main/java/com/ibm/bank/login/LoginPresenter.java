@@ -1,6 +1,6 @@
 package com.ibm.bank.login;
 
-import com.ibm.bank.network.Credentials;
+import com.ibm.bank.domain.Credentials;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;

@@ -2,7 +2,7 @@ package com.ibm.bank.login;
 
 import android.util.Log;
 import com.ibm.bank.network.API;
-import com.ibm.bank.network.Credentials;
+import com.ibm.bank.domain.Credentials;
 import com.ibm.bank.domain.User;
 import retrofit2.Call;
 import retrofit2.Callback;

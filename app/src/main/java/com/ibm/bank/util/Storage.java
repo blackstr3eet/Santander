@@ -2,7 +2,7 @@ package com.ibm.bank.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import com.ibm.bank.network.Credentials;
+import com.ibm.bank.domain.Credentials;
 
 public class Storage {
 
@@ -14,10 +14,10 @@ public class Storage {
         return new Credentials(user, password);
     }
 
-    public static void saveDataWithSharedPreferences(Context context, Credentials credentials) {
+    public static boolean saveDataWithSharedPreferences(Context context, Credentials credentials) {
         clearDataInSharedPreferences(context);
 
-        getSharedPreferences(context).
+        return getSharedPreferences(context).
                 edit().
                 putString("user", credentials.getUser()).
                 putString("password", credentials.getPassword()).
