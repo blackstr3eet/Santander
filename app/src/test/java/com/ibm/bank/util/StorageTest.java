@@ -1,8 +1,6 @@
 package com.ibm.bank.util;
 
 import com.ibm.bank.domain.Credentials;
-import com.ibm.bank.util.Storage;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +10,7 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.powermock.api.mockito.PowerMockito.doReturn;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 import static org.powermock.api.mockito.PowerMockito.when;
@@ -38,7 +37,7 @@ public class StorageTest {
     public void saveLoginDataInInternalStorage() {
         boolean status = Storage.saveDataWithSharedPreferences(Matchers.any(), Matchers.any());
 
-        Assert.assertTrue(status);
+        assertTrue(status);
     }
 
     @Test

@@ -2,7 +2,6 @@ package com.ibm.bank.login;
 
 import com.ibm.bank.domain.User;
 import com.ibm.bank.domain.UserAccount;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +9,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -43,9 +43,9 @@ public class LoginResponseTest {
     public void processingResponseBodyData() {
         response.processBody(loginRequest);
 
-        Assert.assertEquals("Jose da Silva Teste", response.getName());
-        Assert.assertEquals("2050", response.getAgency());
-        Assert.assertEquals("01.231456-4", response.getAccount());
-        Assert.assertEquals("R$3,34", response.getBalance());
+        assertEquals("Jose da Silva Teste", response.getName());
+        assertEquals("2050", response.getAgency());
+        assertEquals("01.231456-4", response.getAccount());
+        assertEquals("R$3,34", response.getBalance());
     }
 }
