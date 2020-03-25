@@ -2,16 +2,16 @@ package com.ibm.bank.login;
 
 public class LoginResponse {
 
-    public String name;
-    public String agency;
-    public String account;
-    public String balance;
+    private String name;
+    private String agency;
+    private String account;
+    private String balance;
 
     public void processBody(LoginRequest request) {
-        name    = request.body.getUserAccount().getName();
-        agency  = request.body.getUserAccount().getBankAccount();
-        account = formatterAgencyNumber(request.body.getUserAccount().getAgency());
-        balance = String.format("R$%.2f", request.body.getUserAccount().getBalance());
+        name    = request.getBody().getUserAccount().getName();
+        agency  = request.getBody().getUserAccount().getBankAccount();
+        account = formatterAgencyNumber(request.getBody().getUserAccount().getAgency());
+        balance = String.format("R$%.2f", request.getBody().getUserAccount().getBalance());
     }
 
     private String formatterAgencyNumber(String data) {
@@ -24,5 +24,21 @@ public class LoginResponse {
         builder.append(data.substring(8));
 
         return builder.toString();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAgency() {
+        return agency;
+    }
+
+    public String getAccount() {
+        return account;
+    }
+
+    public String getBalance() {
+        return balance;
     }
 }

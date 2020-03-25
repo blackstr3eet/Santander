@@ -10,9 +10,9 @@ import retrofit2.Response;
 
 public class LoginRequest {
 
-    public static String TAG = LoginRequest.class.getSimpleName();
+    private static final String TAG = LoginRequest.class.getSimpleName();
 
-    public User body;
+    private User body;
 
     public void login(Credentials credentials) {
         Call<User> user = API.getInstanceService().login(credentials);
@@ -30,5 +30,9 @@ public class LoginRequest {
                 Log.e(TAG, "login request failure", t);
             }
         });
+    }
+
+    public User getBody() {
+        return body;
     }
 }

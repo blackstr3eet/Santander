@@ -23,10 +23,10 @@ public class LoginPresenter implements LoginPresenterInput {
     public void loginResponseBody(LoginResponse response) {
         List<String> values = new ArrayList();
 
-        values.add(response.name);
-        values.add(response.agency);
-        values.add(response.account);
-        values.add(response.balance);
+        values.add(response.getName());
+        values.add(response.getAgency());
+        values.add(response.getAccount());
+        values.add(response.getBalance());
 
         activityInput.get().loginDataResponse(values);
     }
