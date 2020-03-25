@@ -136,13 +136,25 @@ public class ExtractActivity extends AppCompatActivity implements ExtractActivit
         public void onBindViewHolder(ViewHolder holder, int position) {
             holder.title.setText(items.get(position).getTitle());
             holder.description.setText(items.get(position).getDesc());
-            holder.date.setText(items.get(position).getDate());
+            holder.date.setText(formatterDate(items.get(position).getDate()));
             holder.value.setText(String.format("R$%.2f", items.get(position).getValue()));
         }
 
         @Override
         public int getItemCount() {
             return items.size();
+        }
+
+        private String formatterDate(String date) {
+            StringBuilder builder = new StringBuilder();
+
+            builder.append(date.substring(8,10));
+            builder.append("/");
+            builder.append(date.substring(5,7));
+            builder.append("/");
+            builder.append(date.substring(0,4));
+
+            return builder.toString();
         }
     }
 }
