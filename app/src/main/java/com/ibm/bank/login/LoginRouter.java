@@ -37,7 +37,6 @@ public class LoginRouter implements LoginRouterInput, View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        // realize validation on fields login
         String user = activity.get().user.getText().toString();
         String password = activity.get().password.getText().toString();
 
@@ -47,12 +46,11 @@ public class LoginRouter implements LoginRouterInput, View.OnClickListener {
 
             changeStatusLoading(true);
 
-            // delay for wait response of request
             Handler handler = new Handler();
             handler.postDelayed( () -> {
                 activity.get().interactorInput.fetchLoginDataResponse(request);
                 changeStatusLoading(false);
-            }, 5000);
+            }, 2000);
         }
     }
 
