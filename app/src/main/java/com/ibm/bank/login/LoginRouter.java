@@ -51,7 +51,7 @@ public class LoginRouter implements LoginRouterInput, View.OnClickListener {
             handler.postDelayed( () -> {
                 activity.get().interactorInput.fetchLoginDataResponse(request);
                 changeStatusLoading(false);
-            }, 4000);
+            }, 5000);
 
             Storage.saveDataWithSharedPreferences(activity.get(), new Credentials(user, password));
         }
