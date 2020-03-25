@@ -57,7 +57,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInp
     private void bindViews() {
         user = findViewById(R.id.editTextUser);
         password = findViewById(R.id.editTextPassword);
-        progressBar = findViewById(R.id.progressBar);
+        progressBar = findViewById(R.id.progressBarLogin);
         login = findViewById(R.id.buttonLogin);
     }
 

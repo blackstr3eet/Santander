@@ -7,11 +7,11 @@ public class LoginResponse {
     public String account;
     public String balance;
 
-    public void processBody(LoginRequest loginRequest) {
-        name    = loginRequest.body.getUserAccount().getName();
-        agency  = loginRequest.body.getUserAccount().getBankAccount();
-        account = formatterAgencyNumber(loginRequest.body.getUserAccount().getAgency());
-        balance = String.format("R$%.2f", loginRequest.body.getUserAccount().getBalance());
+    public void processBody(LoginRequest request) {
+        name    = request.body.getUserAccount().getName();
+        agency  = request.body.getUserAccount().getBankAccount();
+        account = formatterAgencyNumber(request.body.getUserAccount().getAgency());
+        balance = String.format("R$%.2f", request.body.getUserAccount().getBalance());
     }
 
     private String formatterAgencyNumber(String data) {
