@@ -7,6 +7,7 @@ import android.widget.Toast;
 import com.ibm.bank.network.Credentials;
 import com.ibm.bank.R;
 import com.ibm.bank.extract.ExtractActivity;
+import com.ibm.bank.util.Storage;
 import com.ibm.bank.util.Validation;
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -51,6 +52,8 @@ public class LoginRouter implements LoginRouterInput, View.OnClickListener {
                 activity.get().interactorInput.fetchLoginDataResponse(request);
                 changeStatusLoading(false);
             }, 2000);
+
+            Storage.saveDataWithSharedPreferences(activity.get(), new Credentials(user, password));
         }
     }
 
